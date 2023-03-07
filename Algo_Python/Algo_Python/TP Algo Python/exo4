@@ -1,0 +1,33 @@
+chaine = "78 675 45 65-567 898 76 56-457 6567 544 66-456 77776 6554 45667-23 455 77 56-"
+def tab_num(chaine):
+    N=''
+    tab=[]
+    num=""
+    for i in chaine:
+        num += i
+        if i in ["-","?","_"]:
+            tab.append(num)
+            num=""
+    return tab
+tab_num(chaine)
+#print(tab_num(chaine))
+
+t=[]
+element=""
+for i in tab_num(chaine):
+    for x in range(len(i)):
+        if i[x]==" " or i[x]=="-"  :
+            pass
+        else:
+            element = element+i[x]
+    t.append(element)
+    element=""
+t1=[]
+t2=[]
+for i in t:   
+    if ((len(i)) ==9) and i[:2] in ['77', '78', '76', '70', '75']: 
+            t1.append(i)
+    else: 
+            t2.append(i)
+print(t1, " | ",t2)
+    

@@ -1,0 +1,41 @@
+def is_valid_phrase(phrase):
+    length = len(phrase)
+    if length < 25:
+        return False
+    if not phrase[0].isupper():
+        return False
+    if phrase[-1] not in ['.', '?', '!']:
+        return False
+    return True
+
+def remove_extra_spaces(phrase):
+    i = 0
+    j = 0
+    length = len(phrase)
+    phrase_without_spaces = []
+    while i < length:
+        while i < length and phrase[i].isspace():
+            i += 1
+        while i < length and not phrase[i].isspace():
+            phrase_without_spaces.append(phrase[i])
+            i += 1
+        while i < length and phrase[i].isspace():
+            i += 1
+        if i < length:
+            phrase_without_spaces.append(' ')
+    return "".join(phrase_without_spaces)
+
+n = int(input("Entrer le nombre de phrases : "))
+phrases = []
+valid_count = 0
+for i in range(n):
+    current_phrase = input("Entrer la phrase {} : ".format(i + 1))
+    current_phrase = remove_extra_spaces(current_phrase)
+    if is_valid_phrase(current_phrase):
+        phrases.append(current_phrase)
+        valid_count += 1
+    else:
+        print("La phrase n'est pas valide.")
+print("Phrases corrigées :")
+for i in range(valid_count):
+    print(phrases[i])

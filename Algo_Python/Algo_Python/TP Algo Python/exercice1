@@ -1,0 +1,26 @@
+
+
+Mois_francais = ["janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"]
+Mois_anglais = ["january", "february", "march", "april", "may", "jun", "july", "august", "september", "october", "november", "december"]
+
+
+def mois(my_mois):
+    print("Les mois en anglais")
+    for i in range(3):
+        mois = ""
+        for j in range(i,12,3):
+            if j < 12:
+                mois += "| "+my_mois[j] + " "*(20 - len(my_mois[j] ))
+        print("_"*89)
+        print(mois+"|")
+        print("_"*89)   
+choix = int(input("Veuillez choisir une option (1, 2 ou 3): "))
+
+if choix == 1:
+    mois(Mois_francais)
+elif choix == 2:
+    mois(Mois_anglais)
+elif choix == 3:
+    quit()
+else:
+    print("Option non valide, veuillez réessayer")

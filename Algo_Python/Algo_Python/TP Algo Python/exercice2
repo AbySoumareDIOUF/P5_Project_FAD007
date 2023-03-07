@@ -1,0 +1,8 @@
+phrase = input("Saisissez une phrase : ")
+phrase_sans_espaces = ""
+for i in range(len(phrase)):
+    if phrase[i] == " " and phrase[i + 1] == " ":
+        continue
+    else:
+        phrase_sans_espaces += phrase[i]
+print("Phrase sans espaces inutiles :", phrase_sans_espaces)
