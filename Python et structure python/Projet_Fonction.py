@@ -115,7 +115,7 @@ def validation_note(note):
             matiere = k[0]
             dico[matiere] = []
             notes = k[1][:-1]
-            notes = notes.replace(',', '.').replace('|', '.').split(':')
+            notes = notes.replace(',', '.').replace('|', ':').split(':')
             for i in notes:
                 if "0"<i<"20":
                     return True

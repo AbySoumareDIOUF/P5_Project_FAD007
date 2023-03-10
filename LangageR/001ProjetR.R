@@ -19,50 +19,30 @@ verifier_prenom<-function(prenom){
     return (FALSE)
   }}
 verifier_notes <- function(note) {
-  devoir_valides <- TRUE
-  examen_valide <- TRUE
+  note_vaide <- FALSE
+  
+  note <- strsplit(note, "#")
   note <- gsub("\\,",".",note)
   note <- strsplit(note, " ")
-  note <- strsplit(note, "#")
-  for (not in note) {
-    notes <- strsplit(not, "\\[")[[1]][2]
-    print(notes)
-    for (no in notes) {
-      devoir <- strsplit(no, ":")[[1]][1]
-      examen <- strsplit(no, ":")[[1]][2]
-      examen <- strsplit(examen, "]")[[1]][1]
-      if(all(sapply(examen, function(x) x %in% c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))) {
-        examen <- as.numeric(examen)
-      } else {
-        examen_valide <- FALSE
-        break
-      } 
-      for (note in strsplit(devoir, "\\|")[[1]]) {
-        if(all(sapply(note, function(x) x %in% c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))) {
-          note <- as.numeric(note)
-        } else {
-          devoir_valides <- FALSE
-          break
+  for (not in (note)) {
+    noter <- strsplit(not, "\\[")
+    notes <- noter[[1]][2]
+    notes <- gsub("\\|",":",notes)
+    notes <- gsub("]", "", notes)
+    for (notes in notes){
+      notes <- strsplit(notes, ":")
+      for (var in notes){
+        if (!is.na(as.numeric(var)) && as.numeric(var)>=0 && as.numeric(var)<=20){
+          note_vaide <- TRUE
         }
-        if ((as.numeric(note) < 0||as.numeric(note) > 20)) {
-          devoir_valides <- FALSE
-          break
-        }
-      }
-      if (!(is.numeric(examen)) || as.numeric(examen) < 0 || as.numeric(examen) > 20) {
-        break
-        examen_valide <- FALSE
       }
     }
   }
-  if (devoir_valides == FALSE && examen_valide == FALSE) {
-    return(FALSE)
-  } else if (devoir_valides == FALSE && examen_valide == TRUE) {
-    return(FALSE)
-  } else if (devoir_valides == TRUE && examen_valide == FALSE) {
-    return(FALSE)
-  } else if (devoir_valides == TRUE && examen_valide == TRUE) {
-    return(TRUE)
+  if(note_vaide == FALSE){
+    return (FALSE)
+  }
+  else{
+    return (TRUE)
   }
 }
 verifier_date <- function(date) {
@@ -151,7 +131,7 @@ for (i in 1:nrow(data)) {
   classe <- row$Classe
   note <- row$Note
   date <- row$Date.de.naissance
-  if (!verifier_nom(nom) || !verifier_prenom(prenom)|| !verifier_numero(numero)|| !verifier_classe(classe)||!verifier_date(date)) {
+  if (!verifier_nom(nom) || !verifier_prenom(prenom)|| !verifier_notes(note)|| !verifier_numero(numero)|| !verifier_classe(classe)||!verifier_date(date)) {
     invalid_lines <- rbind(invalid_lines, row)
     next
   }
