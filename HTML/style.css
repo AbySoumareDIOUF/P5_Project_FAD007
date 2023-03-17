@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: rgb(15, 165, 157);
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    position: absolute;
+    position: center;
+    left: 48%;
+    bottom: 660px;
+    transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    color: rgb(222, 238, 130);
+}
+
+#sidebar {
+    background-color: rgb(5, 216, 174);
+    color: white;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#content {
+    margin-left: 200px;
+    padding: 20px;
+    text-align: justify;
+    top: 100px;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar li {
+    padding: 10px;
+}
+
+#menu-toggle:checked~#sidebar {
+    transform: translateX(200px);
+}
+
+h1 {
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    font-size: 120px;
+    text-align: center;
+    bottom: 35px;
+}
+
+h2 {
+    bottom: 44px;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    bottom: 35px;
+    left: -91px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(192, 97, 8);
+    color: white;
+    padding: 20px;
+}
+
+#content {
+    margin-left: 200px;
+    padding: 20px;
+    text-align: justify;
+    font-size: larger;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+label[for="menu-toggle"] {
+    background-color: rgb(169, 148, 10);
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+label[for="menu-toggle"]:hover {
+    background-color: white;
+    color: violet;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
