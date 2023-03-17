@@ -3,11 +3,13 @@ body {
     padding: 0;
 }
 
-button {
+.btn-label {
     background-color: rgb(15, 165, 157);
     color: white;
+    box-sizing: border-box;
     cursor: pointer;
     font-size: 20px;
+    color: #f9f9f9;
     padding: 10px;
     position: absolute;
     position: center;
@@ -21,12 +23,16 @@ button:hover {
     color: rgb(222, 238, 130);
 }
 
+.btn-label:hover {
+    background-color: orange;
+}
+
 #sidebar {
-    background-color: rgb(5, 216, 174);
+    background-color: rgb(208, 106, 16);
     color: white;
     height: 100%;
     position: fixed;
-    top: 0;
+    top: 50px;
     left: -200px;
     width: 200px;
     transition: transform 0.3s ease-in-out;
@@ -97,6 +103,20 @@ header {
     font-size: larger;
 }
 
+
+/* C est le checkbox qui fait la difference avec l ancien code , 
+    on cache un checkbox sur le button
+ si on check , le modal est lance*/
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked~.modal,
+input[type="checkbox"]:checked~.modal-content {
+    display: block;
+}
+
 #menu-toggle {
     display: none;
 }
@@ -119,25 +139,62 @@ label[for="menu-toggle"]:hover {
 }
 
 .modal {
-    display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 200px;
-    transition: transform 0.3s ease-in-out;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 9999;
+    opacity: 0.9;
+}
+
+.modal-header {
+    background-color: rgb(15, 165, 157);
+    color: white;
+    border-bottom: 1px solid #dddddd;
+    box-sizing: border-box;
+    height: 50px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    box-sizing: border-box;
+    padding-left: 105px;
+    padding-top: 25px;
+    line-height: 50px;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.modal-header label {
+    box-sizing: border-box;
+    border-left: 1px solid #dddddd;
+    float: right;
+    line-height: 50px;
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+}
+
+.modal-header label:hover img {
+    opacity: 0.6;
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: lightgreen;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
+    color: black;
+    display: inline-block;
 }
 
 .close {

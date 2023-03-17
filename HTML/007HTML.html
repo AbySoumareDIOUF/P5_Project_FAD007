@@ -8,25 +8,38 @@
     <header>
       <h1>ODC</h1>
       <h2> veillez vous authentifier. Pour cela cliquez sur le boutton sign up s'il vous plait!!</h2>
-    <button id="openModal">SIGN UP</button>
 
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Inscription</h2>
-    <form>
-      <label for="nom">Nom:</label>
-      <input type="text" id="nom" name="nom" required>
-      <br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <br>
-      <input type="submit" value="S'inscrire">
-    </form>
-  </div>
-</div>
+    <input type="checkbox" id="modal">
+    <center><label id="modal" for="modal" class="btn-label">SIGN UP</label></center>
+    <div id="myModal" class="modal">
+        <div class="modal-header">
+                <h3>Inscription</h3>
+                <label for="modal">&times;</label>
+        </div>
 
-       <label for="menu-toggle">&#9776; </label>
+        <div class="modal-content">
+        <form>
+          <table>
+
+          <tr>
+          <td><label for="nom">Nom:</label></td>
+          <td><input type="text" id="nom" name="nom" required></td>
+          </tr>
+
+          <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="email" id="email" name="email" required></td>
+          </tr>
+
+          </table>
+           <input type="submit" value="S'inscrire">
+        </form>
+      </div>
+    </div> 
+
+      </div>
+
+    <label for="menu-toggle">&#9776; </label>
     <input type="checkbox" id="menu-toggle">
     <div id="sidebar">
       <ul>
