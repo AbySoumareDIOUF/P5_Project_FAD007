@@ -5,13 +5,14 @@
 <style>
 
  .container {
-    background-image: url('image.jpg');
+  background-image: url('image.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 102vh;
+  color: white;
 }
 
 .data {
@@ -21,6 +22,8 @@
   flex-direction: column;
   font-size: 4rem;
   margin-bottom: 2rem;
+  top: 15rem;
+   position: relative;
 }
 
 .data p {
@@ -32,22 +35,80 @@
   font-size: 12rem;
   font-weight: bold;
   position: absolute;
-  top: 27rem;
+  top: 33rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
 }
-
+.heure{
+  font-size: 144px;
+  position: relative;
+  bottom: 25%;
+  right: 50%;
+}
+.minute{
+  font-size: 144px;
+  position: relative;
+  bottom: 50%;
+  left: 76%;
+}
+.seconde{
+  font-size: 144px;
+  position: relative;
+  bottom: 75%;
+  left: 210%;
+}
+.jour{
+  font-size: 144px;
+  position: relative;
+  right: 190%;
+}
+.span_jour{
+  font-size: 24px;
+  right: 190%;
+  position: relative;
+}
+.span_heure{
+  font-size: 24px;
+  right: 55%;
+  bottom: 25%;
+  position: relative;
+  
+}
+.span_minute{
+  font-size: 24px;
+  bottom: 50%;
+  position: relative;
+  left: 71%;
+  
+}
+.span_seconde{
+  font-size: 24px;
+  bottom: 75%;
+  position: relative;
+  left: 199%;
+  
+}
+.cpt{
+  font-size: 124px;
+  top: 25%;
+  position: relative;
+}
 </style>
 </head>
 <body>
     <div class="container">
+     <span class="cpt">Compte à rebours Nouvel An</span> 
   <div class="data">
-    <p>18 <span>JOURS</span></p>  
-    <p>01 <span>HEURES</span></p> 
-    <p>03 <span>MINUTES</span></p> 
-    <p>07 <span>SECONDES</span></p>
+    <p class="jour">18</p>
+     <span class="span_jour">JOURS</span>  
+    <p class="heure">01</p> 
+     <span class="span_heure">HEURES</span>
+    <p class="minute">03</p>
+    <span class="span_minute">MINUTES</span>
+    <p class="seconde">07</p>
+     <span class="span_seconde">SECONDES</span>
   </div>
   <div class="year">
     <p>2022</p>
