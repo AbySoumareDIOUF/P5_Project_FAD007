@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tp004</title>
+    <!-- Ajouter les liens vers les fichiers CSS et JS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Ne pas définir de style pour les champs input et textarea */
+        .gene{
+            display: grid;
+            margin: 10px;
+            padding: 10px;
+            width: fit-content;
+            height: 355px;
+            background-color: pink;
+            border: 12px solid #ffb6c1;
+        }
+        .form-group {
+            display: grid;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container gene">
+        <div class="form-group">
+            <textarea id="password" class="form-control" readonly></textarea>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input type="number" id="longeurMDP" class="form-check-label" value="15" min="15" max="20">
+                <label for="longeurMDP">Longueur du mot de passe </label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="majuscules-letters" class="form-check-input">
+                <label class="form-check-label" for="majuscules-letters">Lettres majuscules</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="minuscules-letters" class="form-check-input">
+                <label class="form-check-label" for="minuscules-letters">Lettres minuscules</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="nombres" class="form-check-input">
+                <label class="form-check-label" for="nombres">Nombres</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="special-characters" class="form-check-input">
+                <label class="form-check-label" for="special-characters">Caractères spéciaux</label>
+            </div>
+            <button id="generate-button" class="btn btn-primary" disabled>Générer Mot de passe</button>
+        </div>
+    </div>
+<script>
+        const majusculesLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const minusculesLetters = 'abcdefghijklmnopqrstuvwxyz';
+    const nombres = '0123456789';
+    const caractSpeciaux = '!@#$%^&*()_+-={}[]|\\:;\'"<>,.?/';
+
+    const mdpChoisi = document.querySelector('#longeurMDP');
+    const majusculesLettersCheckbox = document.querySelector('#majuscules-letters');
+    const minusculesLettersCheckbox = document.querySelector('#minuscules-letters');
+    const nombresCheckbox = document.querySelector('#nombres');
+    const caractSpeciauxCheckbox = document.querySelector('#special-characters');
+    const generateButton = document.querySelector('#generate-button');
+    const champMDP = document.querySelector('#password');
+
+    generateButton.addEventListener('click', () => {
+    const passwordLength = parseInt(mdpChoisi.value);
+    const includemajusculesLetters = majusculesLettersCheckbox.checked;
+    const includeminusculesLetters = minusculesLettersCheckbox.checked;
+    const includenombres = nombresCheckbox.checked;
+    const includecaractSpeciaux = caractSpeciauxCheckbox.checked;
+
+    const allowedCharacters = (
+        (includemajusculesLetters ? majusculesLetters : '') +
+        (includeminusculesLetters ? minusculesLetters : '') +
+        (includenombres ? nombres : '') +
+        (includecaractSpeciaux ? caractSpeciaux : '')
+    );
+
+    let password = '';
+    for (let i = 0; i < passwordLength; i++) {
+        const randomIndex = Math.floor(Math.random() * allowedCharacters.length);
+        password += allowedCharacters[randomIndex];
+    }
+
+    champMDP.value = password;
+    champMDP.focus();
+    });
+
+    champMDP.addEventListener('mouseover', () => {
+    champMDP.setAttribute('title', 'Copier le mot de passe');
+    });
+
+    champMDP.addEventListener('click', () => {
+    champMDP.select();
+    document.execCommand('copy');
+    champMDP.removeAttribute('title');
+    alert('Le mot de passe a été copié dans le presse-papiers !');
+    });
+
+    [majusculesLettersCheckbox, minusculesLettersCheckbox, nombresCheckbox, caractSpeciauxCheckbox].forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+        const atLeastOneCheckboxIsChecked = (
+        majusculesLettersCheckbox.checked ||
+        minusculesLettersCheckbox.checked ||
+        nombresCheckbox.checked ||
+        caractSpeciauxCheckbox.checked
+        );
+
+        generateButton.disabled = !atLeastOneCheckboxIsChecked;
+    });
+    });
+</script>
+  </body>
+</html>

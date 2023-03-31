@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Page de notifications</title>
+    <style>
+      #notification {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      #notification.success {
+        background-color: green;
+      }
+      #notification.danger {
+        background-color: red;
+      }
+      #notification.warning {
+        background-color: yellow;
+      }
+      #notification.info {
+        background-color: blue;
+      }
+      #succé{
+        background-color: green;
+        padding: 10px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #danger{
+        background-color: red;
+        padding: 10px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #warning{
+        background-color: yellow;
+        padding: 10px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #info{
+        background-color: blue;
+        padding: 10px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    #gene {
+        display: flex;
+        justify-content: space-between;
+        background-color: #ADD8E6;
+        padding: 30px;
+        width : 66%;
+        margin-top: 144px;
+        margin-left: 383px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gene">
+        <button id="succé">Notification de succès</button>
+        <button id="danger">Notification de danger</button>
+        <button id="warning">Notification d'avertissement</button>
+        <button id="info">Notification d'information</button>
+    </div>
+    <div id="notification">
+        <h1> Mon Projet</h1>
+    </div>
+  </body>
+  <script>
+    const notification = document.getElementById('notification');
+    const btnSuccess = document.getElementById('succé');
+    const btnDanger = document.getElementById('danger');
+    const btnWarning = document.getElementById('warning');
+    const btnInfo = document.getElementById('info');
+
+    btnSuccess.addEventListener('click', () => {
+      notification.classList.add('success');
+      notification.style.opacity = '1';
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.classList.remove('success');
+      }, 1000);
+    });
+
+    btnDanger.addEventListener('click', () => {
+      notification.classList.add('danger');
+      notification.style.opacity = '1';
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.classList.remove('danger');
+      }, 1000);
+    });
+
+    btnWarning.addEventListener('click', () => {
+      notification.classList.add('warning');
+      notification.style.opacity = '1';
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.classList.remove('warning');
+      }, 1000);
+    });
+
+    btnInfo.addEventListener('click', () => {
+      notification.classList.add('info');
+      notification.style.opacity = '1';
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.classList.remove('info');
+      }, 1000);
+    });
+
+  </script>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TP5</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #container {
+        margin: 50px auto;
+        width: 80%;
+        max-width: 800px;
+        }
+
+        .component {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-top: 20px;
+        display: none;
+        }
+
+        #component1 {
+        display: block;
+        }
+
+        #component2 {
+        display: none;
+        }
+        #component3 {
+        display: none;
+        } 
+        #component4 {
+        display: none;
+        } 
+        #component5 {
+        display: none;
+        }
+        .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        }
+        .gene {
+        display: flex;
+        justify-content: space-between;
+        background-color: #ADD8E6;
+        padding: 30px;
+        width: 16%;
+        margin-top: 155px;
+        margin-left: 738px;
+      }
+    #next1{
+        background-color:"pink"
+    }
+    </style>
+</head>
+<body>
+    <div class="gene">
+        <div id="component1">
+            <h3>1 - Quel est le meilleur langage de programmation? :</h3>
+            <ul>
+                <li><input type="radio" name="q1" value="1" data-correct="false">Java</li>
+                <li><input type="radio" name="q1" value="2" data-correct="true">Python</li>
+                <li><input type="radio" name="q1" value="3" data-correct="false">JavaScript</li>
+                <li><input type="radio" name="q1" value="4" data-correct="false">C#</li>
+                <li><input type="radio" name="q1" value="5" data-correct="false">C</li>
+            </ul>
+            <button id="next1" disabled>Suivant</button>
+        </div>
+
+        <div id="component2">
+            <h3>2 - Quel est le créateur de JavaScript? :</h3>
+            <ul>
+                <li><input type="radio" name="q2" value="1" data-correct="true">Brendan Eich</li>
+                <li><input type="radio" name="q2" value="2" data-correct="false">Dj Patil</li>
+                <li><input type="radio" name="q2" value="3" data-correct="false">James Gosling</li>
+                <li><input type="radio" name="q2" value="4" data-correct="false">Patrick Naughton</li>
+            </ul>
+            <button id="next2" disabled>Suivant</button>
+        </div>
+        <div id="component3">
+            <h3>3 - Quel est le langage non interprété ? :</h3>
+            <ul>
+                <li><input type="radio" name="q3" value="1" data-correct="true">C</li>
+                <li><input type="radio" name="q3" value="2" data-correct="false">Html CSS</li>
+                <li><input type="radio" name="q3" value="3" data-correct="false">Ruby</li>
+                <li><input type="radio" name="q3" value="4" data-correct="false">TypeScript</li>
+                <li><input type="radio" name="q3" value="5" data-correct="false">Python</li>
+            </ul>
+            <button id="next3" disabled>Suivant</button>
+        </div>
+         <div id="component4">
+            <h3>4 - Quel est le langage interprété ? :</h3>
+            <ul>
+                <li><input type="radio" name="q4" value="1" data-correct="true">JavaScript</li>
+                <li><input type="radio" name="q4" value="2" data-correct="false">Html CSS</li>
+                <li><input type="radio" name="q4" value="3" data-correct="false">C++</li>
+                <li><input type="radio" name="q4" value="4" data-correct="false">R</li>
+                <li><input type="radio" name="q4" value="5" data-correct="false">Laravel</li>
+            </ul>
+            <button id="next4" disabled>Suivant</button>
+        </div>
+         <div id="component5">
+            <h3>5 - Quel est les langages basés sur HTML CSS ? :</h3>
+            <ul>
+                <li><input type="radio" name="q5" value="1" data-correct="true">JavaScript</li>
+                <li><input type="radio" name="q5" value="2" data-correct="false">Angular</li>
+                <li><input type="radio" name="q5" value="3" data-correct="false">Java</li>
+                <li><input type="radio" name="q5" value="4" data-correct="false">Flutter</li>
+                <li><input type="radio" name="q5" value="5" data-correct="false">Laravel</li>
+            </ul>
+            <button id="next5" disabled>Suivant</button>
+        </div>
+        <p id="score" style="display:none;">
+        
+        <button id="rejou" style="display:none;">Rejouer</button>
+        </p>
+    </div>
+</body>
+<script>
+    const component1 = document.querySelector("#component1");
+    const component2 = document.querySelector("#component2");
+    const component3 = document.querySelector("#component3");
+    const component4 = document.querySelector("#component4");
+    const component5 = document.querySelector("#component5");
+    const next1 = document.querySelector("#next1");
+    const next2 = document.querySelector("#next2");
+    const next3 = document.querySelector("#next3");
+    const next4 = document.querySelector("#next4");
+    const next5 = document.querySelector("#next5");
+    const rejouButton = document.createElement("button");
+    rejouButton.innerText = "Rejouer";
+    rejouButton.style.display = "none";
+    document.body.appendChild(rejouButton);
+    const scoreDisplay = document.querySelector("#score");
+
+    // Fonction pour calculer le score
+    function calculateScore() {
+    let score = 0;
+    const q1reponses = document.querySelectorAll('input[name="q1"]');
+    const q2reponses = document.querySelectorAll('input[name="q2"]');
+    const q3reponses = document.querySelectorAll('input[name="q3"]');
+    const q4reponses = document.querySelectorAll('input[name="q4"]');
+    const q5reponses = document.querySelectorAll('input[name="q5"]');
+    q1reponses.forEach(reponse => {
+        if (reponse.checked && reponse.dataset.correct === "true") {
+        score++;
+        }
+    });
+    q2reponses.forEach(reponse => {
+        if (reponse.checked && reponse.dataset.correct === "true") {
+        score++;
+        }
+    });
+    q3reponses.forEach(reponse => {
+        if (reponse.checked && reponse.dataset.correct === "true") {
+        score++;
+        }
+    });
+    q4reponses.forEach(reponse => {
+        if (reponse.checked && reponse.dataset.correct === "true") {
+        score++;
+        }
+    });
+    q5reponses.forEach(reponse => {
+        if (reponse.checked && reponse.dataset.correct === "true") {
+        score++;
+        }
+    });
+    return score;
+    }
+    function checkreponses() {
+    const q1reponses = document.querySelectorAll('input[name="q1"]');
+    const q2reponses = document.querySelectorAll('input[name="q2"]');
+    const q3reponses = document.querySelectorAll('input[name="q3"]');
+    const q4reponses = document.querySelectorAll('input[name="q4"]');
+    const q5reponses = document.querySelectorAll('input[name="q5"]');
+    let q1Selected = false;
+    let q2Selected = false; 
+    let q3Selected = false;
+    let q4Selected = false;
+    let q5Selected = false;
+    q1reponses.forEach(reponse => {
+        if (reponse.checked) {
+        q1Selected = true;
+        }
+    });
+    q2reponses.forEach(reponse => {
+        if (reponse.checked) {
+        q2Selected = true;
+        }
+    });
+     q3reponses.forEach(reponse => {
+        if (reponse.checked) {
+        q3Selected = true;
+        }
+    });
+    q4reponses.forEach(reponse => {
+        if (reponse.checked) {
+        q4Selected = true;
+        }
+    });
+    q5reponses.forEach(reponse => {
+        if (reponse.checked) {
+        q5Selected = true;
+        }
+    });
+    if (q1Selected) {
+        next1.disabled = false;
+    } else {
+        next1.disabled = true;
+    }
+    if (q2Selected) {
+        next2.disabled = false;
+    } else {
+        next2.disabled = true;
+    }
+     if (q3Selected) {
+        next3.disabled = false;
+    } else {
+        next3.disabled = true;
+    }
+    if (q4Selected) {
+        next4.disabled = false;
+    } else {
+        next4.disabled = true;
+    }
+    if (q5Selected) {
+        next5.disabled = false;
+    } else {
+        next5.disabled = true;
+    }
+    }
+
+    // Écouter les changements dans les réponses
+    const reponses = document.querySelectorAll('input[type="radio"]');
+    reponses.forEach(reponse => {
+    reponse.addEventListener("change", () => {
+        checkreponses();
+    });
+    });
+
+    next1.addEventListener("click", () => {
+    component1.style.display = "none";
+    component3.style.display = "none";
+    component4.style.display = "none";
+    component5.style.display = "none";
+    component2.style.display = "block";
+    });
+    next2.addEventListener("click", () => {
+    component2.style.display = "none";
+    component4.style.display = "none";
+    component1.style.display = "none";
+    component5.style.display = "none";
+    component3.style.display = "block";
+    });
+    next3.addEventListener("click", () => {
+    component3.style.display = "none";
+    component1.style.display = "none";
+    component5.style.display = "none";
+    component2.style.display = "none";
+    component4.style.display = "block";
+    });
+    next4.addEventListener("click", () => {
+    component1.style.display = "none";
+    component2.style.display = "none";
+    component3.style.display = "none";
+    component4.style.display = "none";
+    component5.style.display = "block";
+    });
+    next5.addEventListener("click", () => {
+    const score = calculateScore();
+    scoreDisplay.innerText = `Vous avez trouver ${score}/5.`;
+    scoreDisplay.style.display = "block";
+    rejouButton.style.display = "block";
+    component1.style.display = "none";
+    component2.style.display = "none";
+    component3.style.display = "none";
+    component4.style.display = "none";
+    component5.style.display = "none";
+    next5.style.display = "none";
+    });
+
+    rejouButton.addEventListener("click", () => {
+    component1.style.display = "block";
+    component2.style.display = "none";
+    component3.style.display = "none";
+    component4.style.display = "none";
+    component5.style.display = "none";
+    scoreDisplay.style.display = "none";
+    rejouButton.style.display = "none";
+    next5.style.display = "block";
+    const q1reponses = document.querySelectorAll('input[name="q1"]');
+    const q2reponses = document.querySelectorAll('input[name="q2"]');
+    const q3reponses = document.querySelectorAll('input[name="q3"]');
+    const q4reponses = document.querySelectorAll('input[name="q4"]');
+    const q5reponses = document.querySelectorAll('input[name="q5"]');
+    q1reponses.forEach(reponse => {
+        reponse.checked = false;
+    });
+    q2reponses.forEach(reponse => {
+        reponse.checked = false;
+    });
+    q3reponses.forEach(reponse => {
+        reponse.checked = false;
+    });
+    q4reponses.forEach(reponse => {
+        reponse.checked = false;
+    });
+    q5reponses.forEach(reponse => {
+        reponse.checked = false;
+    });
+    next1.disabled = true;
+    next2.disabled = true;
+    next3.disabled = true;
+    next4.disabled = true;
+    next5.disabled = true;
+    });
+
+</script>

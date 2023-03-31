@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>00TP6</title>
+<style>
+
+ .container {
+  background-image: url('image.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 102vh;
+  color: white;
+}
+
+.data {
+  display: flex;;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  top: 15rem;
+   position: relative;
+}
+
+.data p {
+  margin: 0;
+}
+
+.annee {
+  color: rgba(128, 128, 128, 0.5);
+  font-size: 12rem;
+  font-weight: bold;
+  position: absolute;
+  top: 33rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.heure{
+  font-size: 94px;
+  position: relative;
+  bottom: 25%;
+  right: 50%;
+}
+.minute{
+  font-size: 94px;
+  position: relative;
+  bottom: 50%;
+  left: 76%;
+}
+.seconde{
+  font-size: 94px;
+  position: relative;
+  bottom: 75%;
+  left: 210%;
+}
+.jour{
+  font-size: 94px;
+  position: relative;
+  right: 190%;
+}
+.span_jour{
+  font-size: 24px;
+  right: 190%;
+  position: relative;
+}
+.span_heure{
+  font-size: 24px;
+  right: 55%;
+  bottom: 25%;
+  position: relative;
+  
+}
+.span_minute{
+  font-size: 24px;
+  bottom: 50%;
+  position: relative;
+  left: 71%;
+  
+}
+.span_seconde{
+  font-size: 24px;
+  bottom: 75%;
+  position: relative;
+  left: 199%;
+  
+}
+.cpt{
+  font-size: 124px;
+  top: 25%;
+  position: relative;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+     <span class="cpt">Compte à rebours Nouvel An</span> 
+  <div class="data">
+    <p class="jour"><span id="days"></span></p>
+     <span class="span_jour">JOURS</span>  
+    <p class="heure"><span id="hours"></span></p> 
+     <span class="span_heure">HEURES</span>
+    <p class="minute"><span id="minutes"></span></p>
+    <span class="span_minute">MINUTES</span>
+    <p class="seconde"><span id="seconds"></span></p>
+     <span class="span_seconde">SECONDES</span>
+  </div>
+  <div class="annee">
+    <p>2024</p>
+  </div>
+</div>
+</body>
+<script>
+    function countdown() {
+      var now = new Date();
+      var eventDate = new Date("January 1, 2024 00:00:00");
+      var currentTime = now.getTime();
+      var eventTime = eventDate.getTime();
+      var remTime = eventTime - currentTime;
+      var s = Math.floor(remTime / 1000);
+      var m = Math.floor(s / 60);
+      var h = Math.floor(m / 60);
+      var d = Math.floor(h / 24);
+      h %= 24;
+      m %= 60;
+      s %= 60;
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+      document.getElementById("days").textContent = d;
+      document.getElementById("hours").textContent ="00 - "+h;
+      document.getElementById("minutes").textContent ="00 - "+m;
+      document.getElementById("seconds").textContent ="00 - "+s;
+      setTimeout(countdown, 1000);
+    }
+    countdown();
+  </script>
+</html>

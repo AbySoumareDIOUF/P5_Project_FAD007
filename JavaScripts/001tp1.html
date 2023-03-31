@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>001TP JS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      .component {
+          display: grid;
+          margin: 10px;
+          padding: 10px;
+          width: 30%;
+          height: 355px;
+          grid-auto-rows: 0.5fr 4fr;
+
+        }
+      #components-container {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      .component i {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .gen {
+        background-color: #ADD8E6;
+        padding: 10px;
+        width : 56%;
+        margin-top: 144px;
+        margin-left: 383px;
+        grid-gap: 10px;
+      }
+      #ajouterComponent {
+        margin-left: 92%;
+      }
+      .component header {
+        background-color: green;
+        color: black;
+        display:flex;
+        justify-content: right;
+        align-items: center;
+        color: white;
+
+      }
+      #ajouterComponent{
+        background-color:green;
+        padding:5px;
+        color:white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gen">
+      <button class="fas fa-plus" id="ajouterComponent">Add New</button>
+      <div id="components-container">
+
+      </div>
+    </div>
+    <script>
+      const addNewButton = document.querySelector('#ajouterComponent');
+        addNewButton.addEventListener('click', function() {
+      const newComponent = document.createElement('div');
+        newComponent.classList.add('component');
+
+      const header = document.createElement('header');
+      const editIcon = document.createElement('i');
+        editIcon.classList.add('fas', 'fa-edit');
+      const deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fas', 'fa-trash-alt');
+        header.appendChild(editIcon);
+        header.appendChild(deleteIcon);
+        newComponent.appendChild(header);
+
+      const textarea = document.createElement('textarea');
+        newComponent.appendChild(textarea);
+
+      const container = document.querySelector('#components-container');
+        container.appendChild(newComponent);
+
+        deleteIcon.addEventListener('click', function() {
+          newComponent.remove();
+        });
+
+      let isDisabled = false;
+        editIcon.addEventListener('click', function() {
+          textarea.disabled = isDisabled;
+          isDisabled = !isDisabled;
+        });
+        textarea.addEventListener('input', function() {
+  const header = newComponent.querySelector('header');
+  header.style.backgroundColor = 'blue';
+});
+
+      });
+    </script>
+  </body>
+</html>

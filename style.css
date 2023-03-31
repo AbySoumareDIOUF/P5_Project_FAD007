@@ -1,0 +1,122 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+.d1 {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-image: url('img.jpg');
+    background-size: cover;
+}
+
+.p {
+    font-size: 70px;
+    color: #fff;
+    text-align: center;
+}
+
+.pp {
+    text-align: center;
+    font-size: 40px;
+    color: gainsboro;
+}
+
+.nav {
+    height: 10000%;
+    width: 270px;
+    left: -270px;
+    background-color: navy;
+    transition: transform 0.5s ease-in-out;
+    position: fixed;
+}
+
+.nav ul {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    padding: 30px;
+}
+
+.dO1 {
+    height: 20px;
+    width: 20%;
+}
+
+.d02 {
+    flex-grow: 1;
+    position: relative;
+    background-color: beige;
+    height: 100px;
+}
+
+li img {
+    margin-top: 5;
+    height: 60px;
+    width: 50px;
+    position: relative;
+    left: 40%;
+    border-radius: 50%;
+}
+
+.d02 a {
+    color: rgb(102, 223, 221);
+    padding: 15px;
+    text-decoration: none;
+}
+
+.d02 li a:hover {
+    color: black;
+}
+
+#but {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.282);
+}
+
+#but hr {
+    color: #fff;
+    border-width: 2px;
+}
+
+#but:checked~.nav,
+#but:checked~.mymenu,
+#but:checked~.ab {
+    transform: translateX(270px);
+}
+
+.mymenu {
+    height: 10000%;
+    width: 270px;
+    transition: transform 0.5s ease-in-out;
+    position: fixed;
+}
+
+.mymenu ul {
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+}
+
+label {
+    padding: 20px 20px;
+}
+
+.mymenu li {
+    padding: 20px;
+}
+
+label:hover {
+    color: rgb(102, 223, 221);
+}

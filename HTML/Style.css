@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.cc {
+    height: 654px;
+    position: relative;
+    bottom: 39px;
+    background-color: #74C69D;
+    width: 102%;
+    margin-left: -12px;
+}
+
+header {
+    background-color: #74C69D;
+    color: white;
+    padding: 20px;
+    position: relative;
+    left: -315px;
+    bottom: 314px;
+}
+
+.header2 {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.navi {
+    background-color: #74C69D;
+}
+
+.navbar {
+    background-color: #74C69D;
+}
+
+.img1 {
+    margin-left: 50px;
+}
+
+.grp1 {
+    position: relative;
+    top: 136px;
+    left: 23px;
+}
+
+.but {
+    margin-top: 2%;
+    margin-left: 46%;
+    width: 200px;
+}
+
+.grp2 {
+    margin-top: 33px;
+    margin-left: 11%;
+}
+
+.text1 {
+    width: 392px;
+    color: white;
+    margin-left: 50px;
+    margin-bottom: 80px;
+}
+
+#menu {
+    margin-right: 170px;
+}
+
+.btn-but {
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    width: 200px;
+    border-radius: 7px;
+}
+
+a {
+    font-size: 30px;
+    color: black;
+    position: center;
+}
+
+.cont {
+    margin-top: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 200px;
+    padding: 10px;
+    position: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 7px;
+}
+
+.text3 {
+    width: 392px;
+    margin-left: 72px;
+    margin-bottom: 80px;
+}
+
+.text4 {
+    width: 392px;
+    margin-left: 70px;
+    margin-top: 53px;
+}
+
+.grp3 {
+    margin-left: -46px;
+    margin-top: 33px;
+}
+
+.grp4 {
+    margin-left: 116px;
+    margin-top: 33px;
+}
+
+.img2 {
+    width: 422px;
+}
+
+.grille {
+    width: 76%;
+    height: 587px;
+    position: relative;
+}
+
+.card1 {
+    position: fixed;
+    height: 23%;
+}
+
+.card2 {
+    position: fixed;
+    margin-left: -1px;
+    margin-top: -402px;
+}
+
+.card3 {
+    position: fixed;
+    margin-left: 1px;
+    margin-top: -401px;
+}
+
+.card4 {
+    position: fixed;
+    margin-left: 1px;
+    margin-top: -402px;
+}
+
+.but1 {
+    margin-left: 46%;
+    width: 200px;
+}
+
+.p {
+    font-size: 14px;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exemple de déplacement d'éléments</title>
+    <style>
+      #gauche{
+        display: inline-block;
+        justify-content: flex-start;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        vertical-align: top;
+        background-color:grey;
+        text-align: center;
+        
+      }
+      #droite {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        vertical-align: top;
+        background-color:grey;
+        justify-content: flex-end;
+        text-align: center;
+      }
+      #gauche p, #droite p {
+        cursor: pointer;
+      }
+      .selected {
+        background-color: blue;
+      }
+      .gen{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 26%;
+        width: 50%;
+        margin-bottom: 20px;
+        margin-top: 311px;
+
+      }
+      .bouton{
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        vertical-align: top;
+        background-color:grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="gen">
+        <div id="gauche">
+            <p>Mon Premier</p>
+            <p>Mon Deuxième</p>
+            <p>Mon Troisième</p>
+            <p>Mon Quatrième</p>
+        </div>
+        <div class="bouton"> 
+            <button id="droiteButton" disabled>&gt;&gt;</button>
+            <button id="gaucheButton" disabled>&lt;&lt;</button> 
+        </div>
+        <div id="droite">
+        
+        </div>
+    </div>
+    <script>
+        const gaucheDiv = document.getElementById('gauche');
+        const droiteDiv = document.getElementById('droite');
+        const droiteButton = document.getElementById('droiteButton');
+        const gaucheButton = document.getElementById('gaucheButton');
+        droiteButton.addEventListener('click', () => {
+            moveSelectedElement(gaucheDiv, droiteDiv);
+            gaucheButton.disabled = false;
+        });
+        gaucheButton.addEventListener('click', () => {
+            moveSelectedElement(droiteDiv, gaucheDiv);
+            droiteButton.disabled = false;
+        });
+        gaucheDiv.addEventListener('click', (event) => {
+            if (event.target.tagName === 'P') {
+              // Déselectionne les autres éléments dans la colonne
+              Array.from(gaucheDiv.children).forEach((child) => {
+                child.classList.remove('selected');
+              });
+              event.target.classList.add('selected');
+            }
+        });
+         droiteDiv.addEventListener('click', (event) => {
+            if (event.target.tagName === 'P') {
+              // Déselectionne les autres éléments dans la colonne
+              Array.from(gaucheDiv.children).forEach((child) => {
+                child.classList.remove('selected');
+              });
+              event.target.classList.add('selected');
+            }
+        });
+        function moveSelectedElement(source, destination) {
+          const elementToMove = source.querySelector('.selected');
+          if (elementToMove) {
+            destination.appendChild(elementToMove);
+            elementToMove.classList.remove('selected');
+            const notification = document.createElement('div');
+            notification.innerText = `Elément déplacé de ${source.id} vers ${destination.id}`;
+            if (destination === droiteDiv) {
+              notification.style.backgroundColor = 'green';
+            } else {
+              notification.style.backgroundColor = 'red';
+            }
+            document.body.appendChild(notification);
+            setTimeout(() => {
+              document.body.removeChild(notification);
+            }, 1000);
+          }
+          if (gaucheDiv.children.length === 0) {
+            droiteButton.disabled = true;
+          } else {
+            droiteButton.disabled = false;
+          }
+          if (droiteDiv.children.length === 0) {
+            gaucheButton.disabled = true;
+          } else {
+            gaucheButton.disabled = false;
+          }
+        }
+        if (gaucheDiv.children.length === 0) {
+          droiteButton.disabled = true;
+        } else {
+          droiteButton.disabled = false;
+        }
+        if (droiteDiv.children.length === 0) {
+          gaucheButton.disabled = true;
+        } else {
+          gaucheButton.disabled = false;
+        }
+    </script>
+  </body>
+</html>
